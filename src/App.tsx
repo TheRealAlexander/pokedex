@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Pokedex from './Pokedex';
+import PokemonDetail from './PokemonDetail';
+import About from './About';
+import './App.css'
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <nav>
+        <Link to="/" className="nav-link">Pokédex</Link>
+        <Link to="/about" className="nav-link">About</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Pokedex />} />
+        <Route path="/pokemon/:name" element={<PokemonDetail />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
+
+// To prevent TS1208 error
+export {};
