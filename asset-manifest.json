@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TheRealAlexander/pokedex/static/css/main.e3fd31ed.css",
+    "main.js": "/TheRealAlexander/pokedex/static/js/main.fd2e02a2.js",
+    "static/js/453.ac4c0547.chunk.js": "/TheRealAlexander/pokedex/static/js/453.ac4c0547.chunk.js",
+    "index.html": "/TheRealAlexander/pokedex/index.html",
+    "main.e3fd31ed.css.map": "/TheRealAlexander/pokedex/static/css/main.e3fd31ed.css.map",
+    "main.fd2e02a2.js.map": "/TheRealAlexander/pokedex/static/js/main.fd2e02a2.js.map",
+    "453.ac4c0547.chunk.js.map": "/TheRealAlexander/pokedex/static/js/453.ac4c0547.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e3fd31ed.css",
+    "static/js/main.fd2e02a2.js"
+  ]
+}
