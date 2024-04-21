@@ -23,5 +23,5 @@ const App: React.FC = () => {
 
 export default App;
 
-// To prevent TS1208 error
+
 export {};
