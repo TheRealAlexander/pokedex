@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 interface Stat {
   base_stat: number;
@@ -53,9 +53,16 @@ const PokemonDetail: React.FC = () => {
       />
 
       <div className="pokemon-info">
-        <p><strong>Height:</strong> {pokemon.height}</p>
-        <p><strong>Weight:</strong> {pokemon.weight}</p>
-        <p><strong>Types:</strong> {pokemon.types.map(t => t.type.name).join(', ')}</p>
+        <p>
+          <strong>Height:</strong> {pokemon.height}
+        </p>
+        <p>
+          <strong>Weight:</strong> {pokemon.weight}
+        </p>
+        <p>
+          <strong>Types:</strong>{" "}
+          {pokemon.types.map((t) => t.type.name).join(", ")}
+        </p>
 
         <h2>Stats</h2>
         <ul>
