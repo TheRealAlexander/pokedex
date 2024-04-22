@@ -8,6 +8,11 @@ interface Pokemon {
   type: string;
 }
 
+interface PokemonResult {
+  name: string;
+  url: string;
+}
+
 const pokemonTypeColors = {
   normal: '#E0E0E0',
   fire: '#FFC1C1',
@@ -55,7 +60,7 @@ const Pokedex: React.FC = () => {
   const fetchPokemons = async (url: string) => {
     const response = await axios.get(url);
     const pokemonData = await Promise.all(
-      response.data.results.map(async (pokemon: any) => {
+      response.data.results.map(async (pokemon: PokemonResult) => {
         const pokemonResponse = await axios.get(pokemon.url);
         return {
           name: pokemon.name,
@@ -82,7 +87,7 @@ const Pokedex: React.FC = () => {
         let found = false;
         while (!found) {
           const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=15`);
-          const matchingPokemons = response.data.results.filter((pokemon: any) => pokemon.name.startsWith(event.target.value));
+          const matchingPokemons = response.data.results.filter((pokemon: PokemonResult) => pokemon.name.startsWith(event.target.value));
           if (matchingPokemons.length > 0) {
             fetchPokemons(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=15`);
             found = true;
