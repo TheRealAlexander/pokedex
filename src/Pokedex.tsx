@@ -79,38 +79,38 @@ const Pokedex: React.FC = () => {
     return parts[parts.length - 2];
   };
 
-  const handleSearchChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
-    if (event.target.value.trim() !== '') {
-      if (isNaN(Number(event.target.value))) {
-        let offset = 0;
-        let found = false;
-        while (!found) {
-          const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=15`);
-          const matchingPokemons = response.data.results.filter((pokemon: PokemonResult) => pokemon.name.startsWith(event.target.value));
-          if (matchingPokemons.length > 0) {
-            fetchPokemons(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=15`);
-            found = true;
-          } else if (response.data.next) {
-            offset += 15;
-          } else {
-            break;
-          }
-        }
-      } else {
-        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${event.target.value}`);
-        if (response.data) {
-          setPokemons([{
-            name: response.data.name,
-            url: response.data.url,
-            type: response.data.types[0].type.name,
-          }]);
+const handleSearchChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  setSearchTerm(event.target.value);
+  if (event.target.value.trim() !== '') {
+    if (isNaN(Number(event.target.value))) {
+      let offset = 0;
+      let found = false;
+      while (!found) {
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=15`);
+        const matchingPokemons = response.data.results.filter((pokemon: PokemonResult) => pokemon.name.startsWith(event.target.value));
+        if (matchingPokemons.length > 0) {
+          fetchPokemons(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=15`);
+          found = true;
+        } else if (response.data.next) {
+          offset += 15;
+        } else {
+          break;
         }
       }
     } else {
-      fetchPokemons('https://pokeapi.co/api/v2/pokemon?limit=15');
+      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${event.target.value}`);
+      if (response.data) {
+        setPokemons([{
+          name: response.data.name,
+          url: `https://pokeapi.co/api/v2/pokemon/${event.target.value}/`,
+          type: response.data.types[0].type.name,
+        }]);
+      }
     }
-  };
+  } else {
+    fetchPokemons('https://pokeapi.co/api/v2/pokemon?limit=15');
+  }
+};
 
   return (
     <div className="pokedex-container">
