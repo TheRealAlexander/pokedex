@@ -37,7 +37,7 @@ const Pokedex: React.FC = () => {
   const [filteredPokemon, setFilteredPokemon] = useState<Pokemon[]>([]);
 
   useEffect(() => {
-    fetchPokemons('https://pokeapi.co/api/v2/pokemon?limit=999');
+    fetchPokemons('https://pokeapi.co/api/v2/pokemon?limit=15');
   }, []);
 
   useEffect(() => {
