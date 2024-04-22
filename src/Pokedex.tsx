@@ -87,7 +87,7 @@ const handleSearchChange = async (event: React.ChangeEvent<HTMLInputElement>) =>
       let found = false;
       while (!found) {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=15`);
-        const matchingPokemons = response.data.results.filter((pokemon: PokemonResult) => pokemon.name.startsWith(event.target.value));
+        const matchingPokemons = response.data.results.filter((pokemon: PokemonResult) => pokemon.name.includes(event.target.value));
         if (matchingPokemons.length > 0) {
           fetchPokemons(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=15`);
           found = true;
